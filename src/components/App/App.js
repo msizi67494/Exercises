@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import './App.css';
 import Header from '../Header';
 import Footer from '../Footer';
@@ -11,19 +11,29 @@ class App extends Component {
   }
 
   // method to return exercies
-  getExercisies(){
-    return this.state.exercises
+  getExercisiesByMuscles(){
+      //destructering an array of objects //object entries is the es8 function 
+      return Object.entries( this.state.exercises.reduce((exercises, exercise)=>{
+        const {muscles} = exercise
+        // 
+        exercises[muscles] = exercises[muscles] ? [...exercises[muscles], exercise] : [exercise]
+        return exercises
+      }, {})
+    )
   }
   render() {
-    console.log(this.getExercisies())
+    const exercises = this.getExercisiesByMuscles()
     return (
-      <div className="App">
+      <Fragment>
         <Header />
-        <BodyContent />
+
+        <BodyContent exercises={exercises} />
+
         <Footer muscles={muscles}/>
-      </div>
+      </Fragment>
     );
   }
 }
 
 export default App;
+ 
