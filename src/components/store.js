@@ -40,4 +40,10 @@ export const exercises = [
         description: 'Back and Leg excersies',
         muscles: 'back'
     },
+    {
+        id: 'deadlifts',
+        title: 'Deadlifts',
+        description: 'Back and Leg excersies',
+        muscles: 'legs'
+    },
 ]
