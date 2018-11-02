@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment } from 'react';
 import { Grid, Paper, Typography, List, ListItem, ListItemText} from '@material-ui/core';
 
 
@@ -18,8 +18,17 @@ const styles = {
         }
 }
 
-export default ({exercises, category}) => 
-    //function will reside below
+export default ({
+    exercises,
+    category,
+    onSelect,
+    exercise: {
+           id,
+            title = 'Welcome',
+            description = 'lorem ipsum sit dolo amet',
+            }
+        }) => 
+    //functions will reside below
 
     <Fragment>
         <Grid container style={styles.Grid} >
@@ -34,9 +43,12 @@ export default ({exercises, category}) =>
                                 {group}
                             </Typography>
                             <List component="ul">
-                            {exercises.map(({title}) =>
+                            {exercises.map(({title, id}) =>
                                     <ListItem button>
-                                        <ListItemText primary={title} />
+                                        <ListItemText 
+                                        primary={title}
+                                        onClick={()=> onSelect(id)}
+                                         />
                                     </ListItem>
                                     )}
                             </List>
@@ -49,9 +61,11 @@ export default ({exercises, category}) =>
             <Grid item xs={6}>
                 <Paper style={styles.Paper} className="classses-root">
                    <Typography variant="display1">
-                        Welcome
+                        {title}
                    </Typography>
-                   <Typography variant="subheading">lorem ipsum sit dolo amet</Typography>
+                   <Typography variant="subheading">
+                        {description}
+                   </Typography>
                 </Paper>
             </Grid>
         
