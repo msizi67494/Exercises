@@ -43,7 +43,7 @@ class App extends Component {
     {category, exercise} = this.state
     return (
       <Fragment>
-        <Header />
+        <Header muscles={muscles} />
 
         <BodyContent 
         exercise={exercise}

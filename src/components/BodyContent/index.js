@@ -13,7 +13,6 @@ const styles = {
          overflowY: 'auto'
         },
     Grid: {
-        marginTop: 60,
         marginRight: 10
         }
 }
@@ -33,21 +32,24 @@ export default ({
     <Fragment>
         <Grid container style={styles.Grid} >
 
-            <Grid item  xs={6}>
+            <Grid item  xs={12} sm={6}>
                 <Paper style={styles.Paper}>
                    
                     {exercises.map(([group, exercises])=>
                     !category || category === group ? 
-                        <Fragment>
+                        <Fragment key={group}>
                             <Typography variant="headline" style={{textTransform: "capitalize"}}>
                                 {group}
                             </Typography>
                             <List component="ul">
                             {exercises.map(({title, id}) =>
-                                    <ListItem button>
+                                    <ListItem
+                                        key={id}
+                                        button
+                                        onClick={()=> onSelect(id)}
+                                        >
                                         <ListItemText 
                                         primary={title}
-                                        onClick={()=> onSelect(id)}
                                          />
                                     </ListItem>
                                     )}
@@ -58,7 +60,7 @@ export default ({
                 </Paper>
             </Grid>
 
-            <Grid item xs={6}>
+            <Grid item xs={12} sm={6}>
                 <Paper style={styles.Paper} className="classses-root">
                    <Typography variant="display1">
                         {title}

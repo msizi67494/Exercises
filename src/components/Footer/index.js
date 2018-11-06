@@ -13,6 +13,7 @@ export default ({muscles, onSelect, category}) => {
               onChange={onIndexSelected}
               indicatorColor="primary"
               textColor="primary"
+              scrollButtons="on"
               centered
             >
             {/* we use the map function to destructure data structures like objects, arrays etc */}
